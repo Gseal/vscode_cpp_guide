@@ -1,8 +1,8 @@
-# vs code + cmake + vcpkg搭建c++开发环境
+# vscode + cmake + vcpkg搭建c++开发环境
 
-目前网络上有很多关于使用vs code开发c++的教程，但是基本都止步于使用code runner跑跑简单demo
+目前网络上有很多关于使用vscode开发c++的教程，但是基本都止步于使用code runner跑跑简单demo
 
-但是在实际工作中，整个工程比较复杂，涉及众多源文件、库，甚至子项目等等，仅仅使用code runner无法满足我们的需求，所以我配合c++工程中常用的cmake（编译工具）和vcpkg（包管理器）在vs code中搭建一套可用于实际工作的c++开发环境
+但是在实际工作中，整个工程比较复杂，涉及众多源文件、库，甚至子项目等等，仅仅使用code runner无法满足我们的需求，所以我配合c++工程中常用的cmake（编译工具）和vcpkg（包管理器）在vscode中搭建一套可用于实际工作的c++开发环境
 
 ## 先决条件
 
@@ -24,7 +24,7 @@
 
 [github](https://github.com/microsoft/vcpkg)
 
-## 配置vs code
+## 配置vscode
 
 ### 扩展
 
@@ -41,7 +41,7 @@
 
 ### 设置
 
-按F1，输入“setting.json"，打开设置，添加：
+按F1（ctrl + shift + p），输入“setting.json"，打开设置，添加：
 
 ```
 "cmake.configureSettings": {
@@ -52,7 +52,7 @@
 
 其中`CMAKE_TOOLCHAIN_FILE`为vcpkg安装目录，`VCPKG_TARGET_TRIPLET`为构建平台，需要与vcpkg安装的包平台以及之后我们的项目选择的平台一致
 
-p.s. 这是vs code中使用cmake集成vcpkg的唯一方法，我认为应当设置成图形化配置并且提供相关引导，这里也是网上最不全面的部分，很多人会卡在这一步
+p.s. 这是vscode中使用cmake集成vcpkg的唯一方法，我认为应当设置成图形化配置并且提供相关引导，这里也是网上最不全面的部分，很多人会卡在这一步
 
 ## 小试牛刀
 
@@ -82,13 +82,13 @@ p.s. 这是vs code中使用cmake集成vcpkg的唯一方法，我认为应当设�
 
 ![image-20211108145707897](readme.assets/image-20211108145707897.png)
 
-然后稍等片刻，最下方的状态栏就会显示我们工程的cmake信息
+稍等片刻，最下方的状态栏就会显示我们工程的cmake信息
 
 ![image-20211108145820128](readme.assets/image-20211108145820128.png)
 
 ### 引入fmt库
 
-首先在CMakeLists.txt中，粘贴我们使用vcpkg安装fmt库，提示的那两行代码，注意，代码中的main要改成我们的程序名（add_executable中的名字）
+首先在CMakeLists.txt中，粘贴我们使用vcpkg安装fmt库后提示的那两行代码，注意，代码中的main要改成我们的程序名（add_executable中的名字）
 
 ![image-20211108145956118](readme.assets/image-20211108145956118.png)
 
@@ -98,7 +98,7 @@ p.s. 这是vs code中使用cmake集成vcpkg的唯一方法，我认为应当设�
 
 同时也可以在执行cmake的参数中，看到我们上面配置的vcpkg的安装目录和构建平台
 
-这时候我们再打开main.cpp，开始愉快的编写代码吧
+这时候我们再打开main.cpp，开始愉快的编写代码吧，可以看到智能提示
 
 ![image-20211108150502895](readme.assets/image-20211108150502895.png)
 
